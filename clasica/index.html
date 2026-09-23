@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rincón del Chollo · Compra-venta de segunda mano en El Ejido</title>
+<meta name="description" content="Rincón del Chollo, El Ejido (Almería). Compramos y vendemos móviles, consolas, videojuegos, sonido e instrumentos de segunda mano con garantía desde 2010. Envío desde 5,95 €.">
+<meta name="theme-color" content="#111111">
+<meta property="og:title" content="Rincón del Chollo · Segunda mano con garantía en El Ejido">
+<meta property="og:description" content="Consolas, videojuegos, telefonía, sonido e instrumentos. Compramos lo que no usas. Desde 2010 en C/ Cervantes 80, El Ejido.">
+<meta property="og:image" content="https://ggeelcano.github.io/rincondelchollo/img/tienda.jpg?v=3">
+<meta property="og:type" content="website">
+<link rel="icon" href="../img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --lime:#c8f52a; --lime-deep:#a6d100; --lime-soft:#eefbc4;
+  --ink:#111111; --ink-2:#3c3c3c; --muted:#6b6b66;
+  --bg:#faf9f4; --paper:#ffffff; --line:#e6e4dc;
+  --radius:14px; --shadow:0 10px 30px rgba(17,17,17,.08);
+  --font-head:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  --font-body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-body);color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+h1,h2,h3,.head{font-family:var(--font-head);font-weight:400;letter-spacing:.02em;line-height:.95}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--lime);color:var(--ink);padding:10px 14px;border-radius:8px;z-index:100;font-weight:600}
+.skip:focus{left:8px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:#fff;font-weight:600;text-decoration:none;transition:transform .15s,background .15s,color .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.lime{background:var(--lime);color:var(--ink);border-color:var(--lime)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.white{background:#fff;color:var(--ink);border-color:#fff}
+.btn svg{width:20px;height:20px;flex:none}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--lime);padding:4px 10px;border-radius:6px}
+.sub{color:var(--ink-2);max-width:60ch}
+
+/* Top bar */
+.topbar{background:var(--ink);color:#fff;font-size:.85rem;text-align:center;padding:8px 12px}
+.topbar strong{color:var(--lime)}
+
+/* Header */
+header.site{position:sticky;top:0;z-index:50;background:rgba(250,249,244,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:14px;min-height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:1 1 auto;min-width:0}
+.brand img{width:46px;height:46px;border-radius:10px;object-fit:cover;flex:none}
+.brand span{font-family:var(--font-head);font-size:1.55rem;line-height:1;letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand small{display:block;font-family:var(--font-body);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+@media(max-width:400px){.brand span{font-size:1.25rem}.brand img{width:40px;height:40px}.brand small{font-size:.58rem;letter-spacing:.08em}.nav{gap:8px}.actions{gap:6px}}
+@media(max-width:340px){.brand small{display:none}}
+.menu{display:none;gap:22px;margin-left:auto;list-style:none}
+.menu a{text-decoration:none;font-weight:500;color:var(--ink-2);padding:6px 0;border-bottom:2px solid transparent}
+.menu a:hover{border-color:var(--lime);color:var(--ink)}
+.actions{display:flex;align-items:center;gap:8px;margin-left:auto}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;position:relative}
+.icon-btn svg{width:22px;height:22px}
+.icon-btn .count{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:10px;background:var(--lime);color:var(--ink);font-size:.72rem;font-weight:700;display:grid;place-items:center;padding:0 5px}
+.wa-head{display:none;align-items:center;gap:8px;text-decoration:none;font-weight:600;background:var(--lime);padding:10px 16px;border-radius:999px}
+.wa-head svg{width:20px;height:20px}
+.burger{display:grid}
+.drawer{display:none;border-top:1px solid var(--line);background:var(--bg)}
+.drawer.open{display:block}
+.drawer ul{list-style:none;padding:8px 0 16px}
+.drawer a{display:block;padding:14px 0;text-decoration:none;font-weight:600;border-bottom:1px solid var(--line)}
+.drawer .btn{margin-top:14px;width:100%}
+@media(min-width:960px){.menu{display:flex}.wa-head{display:inline-flex}.burger{display:none}.actions{margin-left:0}}
+
+/* Hero */
+.hero{position:relative;min-height:min(78vh,760px);display:grid;align-items:end;color:#fff;overflow:hidden}
+@media(max-width:700px){.hero{min-height:min(82vh,640px)}}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.25) 40%,rgba(0,0,0,.82) 100%)}
+.hero .wrap{position:relative;z-index:1;padding:64px 0 48px}
+.hero h1{font-size:clamp(3rem,10vw,6.4rem);max-width:12ch;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.hero h1 em{font-style:normal;color:var(--lime)}
+.hero p{margin:14px 0 24px;max-width:52ch;font-size:1.05rem;color:#eee}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .since{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;font-size:.8rem;margin-bottom:16px;border:1px solid rgba(255,255,255,.25);white-space:nowrap}
+.hero .since b{color:var(--lime)}
+
+/* Trust strip */
+.trust{background:var(--ink);color:#fff}
+.trust .wrap{display:grid;grid-template-columns:1fr;gap:0}
+.trust div{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.92rem}
+.trust div:last-child{border:0}
+.trust svg{width:22px;height:22px;flex:none;color:var(--lime)}
+.trust b{color:var(--lime)}
+@media(min-width:760px){.trust .wrap{grid-template-columns:repeat(4,1fr);gap:20px}.trust div{border:0;padding:20px 0}}
+
+/* Sections */
+section{padding:56px 0}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(2.4rem,6vw,3.6rem)}
+.sec-head p{color:var(--muted);max-width:52ch}
+.sec-head a.more{font-weight:600;text-decoration:none;border-bottom:2px solid var(--lime);white-space:nowrap}
+
+/* Two-column showcase */
+.duo{display:grid;grid-template-columns:1fr;gap:16px}
+.duo a{position:relative;display:block;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;text-decoration:none;color:#fff;box-shadow:var(--shadow)}
+.duo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.duo a:hover img{transform:scale(1.04)}
+.duo .cap{position:absolute;inset:auto 0 0 0;padding:22px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.8))}
+.duo .cap h3{font-size:2.2rem}
+.duo .cap span{display:inline-block;margin-top:6px;font-weight:600;border-bottom:2px solid var(--lime)}
+@media(min-width:760px){.duo{grid-template-columns:1fr 1fr}.duo a{aspect-ratio:3/2}}
+
+/* Collections grid */
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.cats a{display:block;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .15s,box-shadow .15s}
+.cats a:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.cats .ph{aspect-ratio:1/1;background:#f1f0ea;overflow:hidden}
+.cats .ph img{width:100%;height:100%;object-fit:cover}
+.cats .ph.contain img{object-fit:contain;padding:8%}
+.cats .t{padding:12px 14px;display:block}
+.cats .t b{display:block;font-size:.95rem;line-height:1.2}
+.cats .t small{display:block;color:var(--muted);margin-top:3px}
+@media(min-width:760px){.cats{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1100px){.cats{grid-template-columns:repeat(6,1fr)}}
+
+/* Product cards */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 12px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr);gap:24px 20px}}
+@media(min-width:1100px){.grid.four{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;position:relative}
+.card .ph{position:relative;aspect-ratio:3/4;background:#f3f2ec;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s,opacity .3s}
+.card .ph.contain img{object-fit:contain;padding:6%}
+.card:hover .ph img{transform:scale(1.03)}
+.card .ph button.open{position:absolute;inset:0;background:transparent;border:0;cursor:pointer}
+.badge{position:absolute;top:10px;left:10px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:6px;background:var(--lime);color:var(--ink);z-index:2}
+.badge.used{background:var(--ink);color:#fff}
+.badge.sale{background:#ff4d3d;color:#fff}
+.card .body{padding:12px 12px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .cat{font-size:.72rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.card h3{font-family:var(--font-body);font-size:.98rem;font-weight:600;line-height:1.3;letter-spacing:0}
+.card h3 a{text-decoration:none}
+.card h3 a::after{content:"";position:absolute;inset:0}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price b{font-size:1.15rem}
+.price s{color:var(--muted);font-size:.9rem}
+.price small{color:var(--muted);font-size:.72rem}
+.swatches{display:flex;gap:6px;align-items:center;position:relative;z-index:3;margin-top:2px}
+.swatches button{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);padding:0}
+.swatches button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.swatches span{font-size:.72rem;color:var(--muted);margin-left:4px}
+.card .add{position:relative;z-index:3;margin-top:auto;padding-top:8px}
+.card .add button{width:100%;min-height:44px;border-radius:10px;border:2px solid var(--ink);background:#fff;font-weight:600;transition:background .15s,color .15s}
+.card .add button:hover{background:var(--ink);color:#fff}
+.card .add button.done{background:var(--lime);border-color:var(--lime)}
+
+/* Filters */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 0 12px;margin-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;min-height:42px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:500;color:var(--ink-2)}
+.chips button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chips button span{opacity:.6;margin-left:4px;font-size:.85em}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;font-size:.9rem;color:var(--muted)}
+.toolbar select{min-height:42px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;font:inherit}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--radius)}
+
+/* Sell section */
+.sell{background:var(--lime);color:var(--ink)}
+.sell .wrap{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+.sell h2{font-size:clamp(2.8rem,8vw,4.6rem);max-width:12ch}
+.sell img{border-radius:var(--radius);aspect-ratio:1/1;object-fit:cover;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.steps{list-style:none;display:grid;gap:12px;margin:22px 0}
+.steps li{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.55);padding:14px;border-radius:12px}
+.steps li b{font-family:var(--font-head);font-size:1.8rem;line-height:1;color:var(--ink);flex:none;width:32px}
+.steps li p{font-size:.95rem}
+.sell .btn{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(min-width:900px){.sell .wrap{grid-template-columns:1.1fr .9fr;gap:48px}}
+
+/* About */
+.about .wrap{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+.about img{border-radius:var(--radius);width:100%;aspect-ratio:4/5;object-fit:cover;box-shadow:var(--shadow)}
+.about h2{font-size:clamp(2.6rem,7vw,4rem);margin:10px 0 14px}
+.about p{color:var(--ink-2);margin-bottom:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.stats div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.stats b{display:block;font-family:var(--font-head);font-size:2rem;line-height:1}
+.stats small{color:var(--muted);font-size:.75rem}
+@media(min-width:900px){.about .wrap{grid-template-columns:1fr 1fr;gap:56px}}
+
+/* Reviews */
+.reviews{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rev-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.rev{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.rev .stars{color:#f5b300;letter-spacing:2px;font-size:.95rem}
+.rev p{margin:8px 0 10px;font-size:.95rem}
+.rev small{color:var(--muted)}
+@media(min-width:760px){.rev-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* Contact / map */
+.contact .wrap{display:grid;grid-template-columns:1fr;gap:20px}
+.contact .wrap>*{min-width:0}
+.contact .info{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px}
+.contact .info h2{font-size:2.6rem;margin-bottom:12px}
+.contact dl{display:grid;grid-template-columns:1fr;gap:4px 14px;font-size:.95rem}
+.contact dt{font-weight:700;color:var(--muted);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;padding-top:8px}
+.contact dd{min-width:0;overflow-wrap:anywhere}
+.contact dd a{text-decoration:none;font-weight:600}
+@media(min-width:480px){.contact dl{grid-template-columns:auto 1fr;gap:8px 14px}.contact dt{padding-top:3px}.contact .info{padding:22px}}
+.contact iframe{width:100%;height:100%;min-height:320px;border:0;border-radius:var(--radius)}
+@media(min-width:900px){.contact .wrap{grid-template-columns:1fr 1fr}}
+
+/* Footer */
+footer{background:var(--ink);color:#d8d8d2;padding:48px 0 28px;font-size:.92rem}
+footer .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px 20px}
+footer h4{font-family:var(--font-head);color:#fff;font-size:1.4rem;letter-spacing:.04em;margin-bottom:10px}
+footer ul{list-style:none;display:grid;gap:7px}
+footer a{text-decoration:none;color:#d8d8d2}
+footer a:hover{color:var(--lime)}
+footer .legal{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.8rem;color:#9a9a94;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+@media(min-width:900px){footer .cols{grid-template-columns:1.3fr 1fr 1fr 1fr}}
+
+/* Modal (quick view) */
+.modal{position:fixed;inset:0;z-index:90;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);padding:0}
+.modal.open{display:flex}
+.modal .panel{background:#fff;width:100%;max-width:880px;max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;display:grid;grid-template-columns:1fr;position:relative}
+.modal .panel .ph{aspect-ratio:4/3;background:#f3f2ec}
+.modal .panel .ph img{width:100%;height:100%;object-fit:cover}
+.modal .panel .ph.contain img{object-fit:contain;padding:6%}
+.modal .txt{padding:20px 18px 26px}
+.modal .txt h3{font-family:var(--font-body);font-weight:700;font-size:1.3rem;letter-spacing:0;line-height:1.25}
+.modal .txt .cat{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:6px}
+.modal .txt p{color:var(--ink-2);margin:12px 0;font-size:.95rem}
+.modal .txt ul{list-style:none;display:grid;gap:6px;margin:12px 0;font-size:.9rem}
+.modal .txt li{display:flex;gap:8px;align-items:center}
+.modal .txt li svg{width:18px;height:18px;color:var(--lime-deep);flex:none}
+.modal .txt .price{margin:6px 0 4px}.modal .txt .price b{font-size:1.6rem}
+.modal .btns{display:grid;gap:10px;margin-top:14px}
+.modal .close{position:absolute;top:10px;right:10px;width:42px;height:42px;border-radius:50%;background:#fff;border:1px solid var(--line);z-index:2;font-size:1.3rem;line-height:1}
+@media(min-width:760px){.modal{align-items:center;padding:20px}.modal .panel{grid-template-columns:1fr 1fr;border-radius:20px}.modal .panel .ph{aspect-ratio:3/4;height:100%}.modal .txt{padding:28px}.modal .btns{grid-template-columns:1fr 1fr}}
+
+/* Cart drawer */
+.cart{position:fixed;inset:0 0 0 auto;width:min(420px,100%);background:#fff;z-index:95;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.2)}
+.cart.open{transform:none}
+.cart header{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+.cart header h3{font-size:1.8rem}
+.cart .items{flex:1;overflow:auto;padding:12px 18px;display:grid;gap:12px;align-content:start}
+.cart .item{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center}
+.cart .item img{width:64px;height:80px;object-fit:cover;border-radius:8px;background:#f3f2ec}
+.cart .item b{font-size:.92rem;display:block}
+.cart .item small{color:var(--muted)}
+.cart .item .qty{display:flex;align-items:center;gap:6px}
+.cart .item .qty button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:#fff}
+.cart footer{background:#fff;color:var(--ink);padding:16px 18px;border-top:1px solid var(--line);display:grid;gap:10px}
+.cart footer .row{display:flex;justify-content:space-between;font-size:.95rem}
+.cart footer .row.total{font-weight:700;font-size:1.1rem}
+.cart footer .note{font-size:.8rem;color:var(--muted)}
+.cart .emptymsg{text-align:center;color:var(--muted);padding:40px 10px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:94;display:none}
+.overlay.open{display:block}
+
+.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,120%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;font-size:.9rem;z-index:99;transition:transform .25s;white-space:nowrap;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis}
+.toast.show{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<div class="topbar">Envío desde <strong>5,95 €</strong> · gratis a partir de 200 € · Recogida en tienda gratis</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#" aria-label="Rincón del Chollo, inicio">
+      <img src="../img/logo.jpg" alt="Logotipo de Rincón del Chollo" width="46" height="46">
+      <span>Rincón del Chollo<small>Segunda mano · El Ejido</small></span>
+    </a>
+    <ul class="menu">
+      <li><a href="#tienda">Tienda</a></li>
+      <li><a href="#tienda" data-cat="videojuegos">Videojuegos</a></li>
+      <li><a href="#tienda" data-cat="telefonia">Telefonía</a></li>
+      <li><a href="#tienda" data-cat="sonido">Sonido</a></li>
+      <li><a href="#vender">Vende lo tuyo</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+    </ul>
+    <div class="actions">
+      <a class="wa-head" href="https://wa.me/34636242325" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+        636 242 325
+      </a>
+      <button class="icon-btn" id="cartBtn" aria-label="Abrir carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 6h15l-1.5 8h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
+        <span class="count" id="cartCount">0</span>
+      </button>
+      <button class="icon-btn burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="drawer" id="drawer" aria-label="Menú principal">
+    <div class="wrap">
+      <ul>
+        <li><a href="#tienda">Tienda completa</a></li>
+        <li><a href="#tienda" data-cat="videojuegos">Consolas y videojuegos</a></li>
+        <li><a href="#tienda" data-cat="telefonia">Telefonía y accesorios</a></li>
+        <li><a href="#tienda" data-cat="sonido">Sonido</a></li>
+        <li><a href="#tienda" data-cat="instrumentos">Instrumentos musicales</a></li>
+        <li><a href="#vender">Vende lo que no usas</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto y horario</a></li>
+      </ul>
+      <a class="btn lime" href="https://wa.me/34636242325" target="_blank" rel="noopener">WhatsApp 636 242 325</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="hero" style="padding:0">
+  <img src="../img/tienda.jpg" alt="Fachada de Rincón del Chollo en la calle Cervantes 80 de El Ejido" fetchpriority="high">
+  <div class="wrap">
+    <span class="since">Desde <b>2010</b> en El Ejido · ★ 4,4 en Google</span>
+    <h1>Segunda mano <em>con garantía</em> y al mejor precio</h1>
+    <p>Consolas, videojuegos, móviles, sonido e instrumentos revisados y con garantía de 6 meses. Compramos lo que ya no usas y lo pagamos al momento.</p>
+    <div class="ctas">
+      <a class="btn lime" href="#tienda">Ver la tienda</a>
+      <a class="btn white" href="#vender">Vender lo mío</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="wrap">
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 16.6 6.1 19.8l1.3-6.5L2.5 8.8 9.1 8z"/></svg><span><b>4,4 / 5</b> con más de 180 opiniones en Google</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span><b>6 meses de garantía</b> en todo lo de segunda mano</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></svg><span>Envío desde <b>5,95 €</b>, gratis a partir de 200 €</span></div>
+    <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M12 4l8 8-8 8"/></svg><span><b>Compramos y cambiamos</b>: tasación gratis por WhatsApp</span></div>
+  </div>
+</div>
+
+<section id="colecciones">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Lo que más se mueve</span><h2 style="margin-top:8px">Consolas y telefonía</h2></div>
+      <a class="more" href="#tienda">Ver todo el catálogo</a>
+    </div>
+    <div class="duo">
+      <a href="#tienda" data-cat="videojuegos">
+        <img src="../img/precios.jpg" alt="Vitrina de Rincón del Chollo con consolas, mandos y juegos de PlayStation, Nintendo Switch y Game Boy" loading="lazy">
+        <div class="cap"><h3>Consolas y videojuegos</h3><span>Retro y actual, desde 4,95 €</span></div>
+      </a>
+      <a href="#tienda" data-cat="telefonia">
+        <img src="../img/marcas.jpg" alt="Mostrador de telefonía de Rincón del Chollo con móviles de segunda mano y accesorios" loading="lazy">
+        <div class="cap"><h3>Telefonía y accesorios</h3><span>Móviles revisados y auriculares nuevos</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>Categorías</h2></div>
+    <div class="cats" id="cats"></div>
+  </div>
+</section>
+
+<section id="masvendidos" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Más vendidos</span><h2 style="margin-top:8px">Lo que se lleva la gente</h2></div>
+      <a class="more" href="#tienda">Ver novedades</a>
+    </div>
+    <div class="grid" id="bestGrid"></div>
+  </div>
+</section>
+
+<section id="tienda">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Tienda online</span><h2 style="margin-top:8px">Novedades</h2><p>Cada artículo aparece una sola vez. Si hay colores o unidades, los eliges dentro de la ficha.</p></div>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+    <div class="toolbar">
+      <span id="countTxt"></span>
+      <label>Ordenar <select id="sort"><option value="new">Novedades</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option></select></label>
+    </div>
+    <div class="grid four" id="shopGrid"></div>
+  </div>
+</section>
+
+<section class="sell" id="vender">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="background:var(--ink);color:#fff">Compra · venta · cambio</span>
+      <h2 style="margin-top:12px">¿Tienes cosas cogiendo polvo? Te las compramos</h2>
+      <p style="max-width:52ch">Móviles, portátiles, tablets, consolas, juegos, cámaras, instrumentos, herramientas, car audio… Si funciona, nos interesa. Tasación gratis y sin compromiso.</p>
+      <ol class="steps">
+        <li><b>1</b><p><strong>Mándanos fotos por WhatsApp</strong> de lo que quieres vender, con el modelo y su estado.</p></li>
+        <li><b>2</b><p><strong>Te hacemos una oferta</strong> en el día. Puedes cobrar en efectivo o usarla como cambio por algo de la tienda.</p></li>
+        <li><b>3</b><p><strong>Pásate por Cervantes 80</strong>, lo revisamos contigo y cobras al momento.</p></li>
+      </ol>
+      <a class="btn" href="https://wa.me/34636242325?text=Hola%2C%20quiero%20vender%20esto%3A%20" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.3.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Pedir tasación por WhatsApp
+      </a>
+    </div>
+    <img src="../img/imagensonido.jpg" alt="Zona de imagen y sonido de la tienda: altavoces, equipos de música y televisores" loading="lazy">
+  </div>
+</section>
+
+<section class="about" id="nosotros">
+  <div class="wrap">
+    <img src="../img/precios2.jpg" alt="Vitrinas de videojuegos retro y figuras Skylanders en Rincón del Chollo" loading="lazy">
+    <div>
+      <span class="eyebrow">Nosotros</span>
+      <h2>Una segunda oportunidad para lo que ya no usas</h2>
+      <p>Abrimos en 2010 en El Ejido con una idea sencilla: comprar y vender artículos de segunda mano y nuevos a un precio justo, revisados uno a uno y con garantía.</p>
+      <p>Somos la tienda de referencia en la zona para videojuegos retro y consolas, y además reparamos consolas, mandos y accesorios. Si buscas algo concreto, pregúntanos: lo que no está en la web suele estar en la tienda.</p>
+      <div class="stats">
+        <div><b>2010</b><small>Desde entonces en Cervantes 80</small></div>
+        <div><b>4,4★</b><small>Más de 180 opiniones en Google</small></div>
+        <div><b>6 m</b><small>Garantía en segunda mano</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="sec-head"><h2>Opiniones de clientes en Google</h2><a class="more" href="https://maps.app.goo.gl/rmJMxXj9CmcqzPg1A" target="_blank" rel="noopener">Ver en Google Maps</a></div>
+    <div class="rev-grid">
+      <article class="rev"><div class="stars" aria-label="5 estrellas">★★★★★</div><p>Muy buen trato y buenos precios. Fui a por una consola de segunda mano y salió perfecta, con su garantía.</p><small>Cliente de Google · Consolas</small></article>
+      <article class="rev"><div class="stars" aria-label="5 estrellas">★★★★★</div><p>Tienen de todo: videojuegos retro, móviles, altavoces. Si no lo tienen te lo buscan.</p><small>Cliente de Google · Videojuegos</small></article>
+      <article class="rev"><div class="stars" aria-label="4 estrellas">★★★★☆</div><p>Vendí un portátil que no usaba y me lo tasaron en el momento. Rápido y sin líos.</p><small>Cliente de Google · Compra-venta</small></article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="info">
+      <h2>Ven a vernos</h2>
+      <dl>
+        <dt>Dirección</dt><dd>C/ Cervantes, 80 · 04700 El Ejido (Almería)</dd>
+        <dt>Horario</dt><dd>Lunes a sábado: 10:00–14:00 y 17:30–21:30<br>Domingo cerrado</dd>
+        <dt>Teléfono</dt><dd><a href="tel:+34950571802">950 571 802</a></dd>
+        <dt>WhatsApp</dt><dd><a href="https://wa.me/34636242325" target="_blank" rel="noopener">636 242 325</a></dd>
+        <dt>Email</dt><dd><a href="mailto:info@rincondelchollo.com">info@rincondelchollo.com</a></dd>
+        <dt>Redes</dt><dd><a href="https://www.facebook.com/RinconDelCholloEjido" target="_blank" rel="noopener">Facebook</a> · <a href="https://es.wallapop.com/user/rocios-31835052" target="_blank" rel="noopener">Wallapop</a></dd>
+      </dl>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+        <a class="btn lime" href="https://wa.me/34636242325" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a class="btn ghost" href="https://maps.app.goo.gl/rmJMxXj9CmcqzPg1A" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+    <iframe title="Mapa de Rincón del Chollo en El Ejido" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Calle+Cervantes+80,+04700+El+Ejido,+Almer%C3%ADa&output=embed"></iframe>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Rincón del Chollo</h4>
+        <p style="max-width:34ch;color:#b9b9b2">Compra-venta de artículos de segunda mano y nuevos en El Ejido desde 2010. Garantía, precio justo y trato de tienda de barrio.</p>
+        <p style="margin-top:12px;color:#fff;font-weight:600">C/ Cervantes, 80 · El Ejido</p>
+      </div>
+      <div><h4>Tienda</h4><ul>
+        <li><a href="#tienda" data-cat="videojuegos">Consolas y videojuegos</a></li>
+        <li><a href="#tienda" data-cat="telefonia">Telefonía y accesorios</a></li>
+        <li><a href="#tienda" data-cat="sonido">Sonido</a></li>
+        <li><a href="#tienda" data-cat="instrumentos">Instrumentos musicales</a></li>
+        <li><a href="#tienda" data-cat="caraudio">Car audio</a></li>
+        <li><a href="#vender">Vende lo tuyo</a></li>
+      </ul></div>
+      <div><h4>Contacto</h4><ul>
+        <li><a href="https://wa.me/34636242325">WhatsApp 636 242 325</a></li>
+        <li><a href="tel:+34950571802">950 571 802</a></li>
+        <li><a href="mailto:info@rincondelchollo.com">info@rincondelchollo.com</a></li>
+        <li><a href="https://www.facebook.com/RinconDelCholloEjido">Facebook</a></li>
+        <li><a href="https://es.wallapop.com/user/rocios-31835052">Wallapop</a></li>
+      </ul></div>
+      <div><h4>Información</h4><ul>
+        <li><a href="#">Condiciones de compra</a></li>
+        <li><a href="#">Envíos y devoluciones</a></li>
+        <li><a href="#">Garantía de segunda mano</a></li>
+        <li><a href="#">Aviso legal</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Política de cookies</a></li>
+      </ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Rincón del Chollo · El Ejido (Almería)</span><span>Pago seguro · Tarjeta, Bizum y transferencia</span></div>
+  </div>
+</footer>
+
+<!-- Quick view modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+  <div class="panel">
+    <button class="close" id="mClose" aria-label="Cerrar ficha">×</button>
+    <div class="ph" id="mPh"><img id="mImg" src="" alt=""></div>
+    <div class="txt">
+      <div class="cat" id="mCat"></div>
+      <h3 id="mTitle"></h3>
+      <div class="price" id="mPrice"></div>
+      <div class="swatches" id="mSw"></div>
+      <p id="mDesc"></p>
+      <ul id="mFeat"></ul>
+      <div class="btns">
+        <button class="btn" id="mAdd">Añadir al carrito</button>
+        <a class="btn lime" id="mWa" href="#" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart -->
+<div class="overlay" id="overlay"></div>
+<aside class="cart" id="cart" aria-label="Carrito de la compra" aria-hidden="true">
+  <header><h3 class="head">Tu carrito</h3><button class="icon-btn" id="cartClose" aria-label="Cerrar carrito">×</button></header>
+  <div class="items" id="cartItems"></div>
+  <footer>
+    <div class="row"><span>Subtotal</span><span id="cSub">0,00 €</span></div>
+    <div class="row"><span>Envío</span><span id="cShip">5,95 €</span></div>
+    <div class="row total"><span>Total</span><span id="cTot">0,00 €</span></div>
+    <button class="btn lime" id="checkout">Finalizar compra</button>
+    <span class="note">Envío gratis a partir de 200 €. También puedes recoger en tienda sin coste.</span>
+  </footer>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const CATS = {
+  videojuegos:{name:'Consolas y videojuegos',img:'../img/p-volante.jpg'},
+  telefonia:{name:'Telefonía y accesorios',img:'../img/p-i12a.jpg'},
+  sonido:{name:'Sonido',img:'../img/p-e15.jpg'},
+  instrumentos:{name:'Instrumentos musicales',img:'../img/p-laud.jpg'},
+  caraudio:{name:'Car audio',img:'../img/p-smartcar.jpg'},
+  reparacion:{name:'Reparación de consolas',img:'../img/p-kinect.jpg',contain:true,service:true},
+};
+const PRODUCTS = [
+  {id:'inpods',name:'Auriculares inalámbricos Inpods i12',cat:'telefonia',price:18.95,cond:'Nuevo',best:true,
+   desc:'Auriculares TWS Bluetooth 5.0 con estuche de carga, control táctil y sonido estéreo. Compatibles con Android e iOS. Sirven para música y manos libres.',
+   feats:['Bluetooth 5.0, emparejado automático','Estuche de carga incluido','4 colores a elegir','Nuevo, precintado'],
+   variants:[{n:'Dorado',c:'#d9b46a',img:'../img/p-i12a.jpg'},{n:'Rosa',c:'#f5b6a8',img:'../img/p-i12b.jpg'},{n:'Menta',c:'#9fe0b5',img:'../img/p-i12c.jpg'},{n:'Amarillo',c:'#f4d36a',img:'../img/p-i12d.jpg'}]},
+  {id:'volante',name:'Volante para Xbox 360',cat:'videojuegos',price:19.95,cond:'Segunda mano',best:true,img:'../img/p-volante.jpg',
+   desc:'Volante compatible con Xbox 360, revisado y probado. Ideal para Forza y juegos de conducción.',feats:['Probado en tienda','6 meses de garantía','Recogida en tienda gratis']},
+  {id:'laud',name:'Laúd Alhambra L-4D',cat:'instrumentos',price:249.95,cond:'Segunda mano',best:true,img:'../img/p-laud.jpg',
+   desc:'Laúd español Alhambra modelo L 4D en muy buen estado. Incluye funda semirrígida y púa.',feats:['Funda semirrígida incluida','Revisado y afinado','6 meses de garantía']},
+  {id:'starlink',name:'Starlink: Battle for Atlas · PS4 Starter Pack',cat:'videojuegos',price:9.95,cond:'Nuevo',img:'../img/p-starlink.jpg',contain:true,
+   desc:'Pack de inicio con juego, nave y piloto. Producto sin abrir, en su embalaje original.',feats:['Compatible PlayStation 4','Precintado','Envío 5,95 €']},
+  {id:'kinect',name:'Cámara Kinect para Xbox 360',cat:'videojuegos',price:9.95,cond:'Segunda mano',img:'../img/p-kinect.jpg',contain:true,
+   desc:'Sensor Kinect original con lentes de color, sensor de profundidad y micrófono multi-array. Usado y probado.',feats:['Probado en tienda','6 meses de garantía']},
+  {id:'hdd360',name:'Disco duro Xbox 360 (20 GB)',cat:'videojuegos',price:9.95,cond:'Segunda mano',img:'../img/p-hdd360.jpg',contain:true,
+   desc:'Disco duro de 20 GB para Xbox 360 clásica. Funcionando y formateado.',feats:['20 GB','Compatible Xbox 360','6 meses de garantía']},
+  {id:'smartcar',name:'Next Smart Car',cat:'caraudio',price:14.99,old:19.95,cond:'Nuevo',img:'../img/p-smartcar.jpg',
+   desc:'Sistema que convierte tu coche en un coche conectado: WiFi a bordo y ventajas para el conductor.',feats:['Nuevo','Rebajado de 19,95 €','Instalación sencilla']},
+  {id:'e15',name:'Altavoz Bluetooth E-15',cat:'sonido',price:12.95,cond:'Nuevo',
+   desc:'Altavoz portátil de 5 W con driver de 2,5", batería de 1200 mAh y carga USB 5 V. Compacto y con buen volumen para su tamaño.',
+   feats:['5 W, driver 2,5"','Batería 1200 mAh','Carga por USB','Nuevo'],
+   variants:[{n:'Rojo',c:'#e0322a',img:'../img/p-e15.jpg'},{n:'Verde',c:'#b5e534',img:'../img/p-e15b.jpg'}]},
+  {id:'i7',name:'Auriculares i7 mini',cat:'telefonia',price:8.95,cond:'Nuevo',img:'../img/p-i7.jpg',
+   desc:'Auriculares Bluetooth 5.0 sin cables, con bloqueo de ruido y compatibilidad Android e iOS.',feats:['Bluetooth 5.0','Nuevo','Envío 5,95 €']},
+];
+const fmt = n => n.toFixed(2).replace('.',',')+' €';
+const waLink = p => 'https://wa.me/34636242325?text='+encodeURIComponent('Hola, me interesa: '+p.name+' ('+fmt(p.price)+'). ¿Sigue disponible?');
+const pImg = (p,i=0) => p.variants ? p.variants[i].img : p.img;
+const state = {cat:'all',sort:'new',cart:[],modal:null,vidx:0};
+
+function badge(p){ if(p.old) return '<span class="badge sale">Oferta</span>'; return p.cond==='Nuevo'?'<span class="badge">Nuevo</span>':'<span class="badge used">Segunda mano</span>'; }
+function card(p){
+  const sw = p.variants ? `<div class="swatches" data-id="${p.id}">${p.variants.map((v,i)=>`<button type="button" style="background:${v.c}" aria-label="${v.n}" aria-pressed="${i===0}" data-i="${i}"></button>`).join('')}<span>${p.variants.length} colores</span></div>` : '';
+  return `<article class="card" data-id="${p.id}">
+    <div class="ph${p.contain?' contain':''}">${badge(p)}<img src="${pImg(p)}" alt="${p.name}" loading="lazy"><button class="open" data-open="${p.id}" aria-label="Ver ${p.name}"></button></div>
+    <div class="body">
+      <div class="cat">${CATS[p.cat].name}</div>
+      <h3><a href="#" data-open="${p.id}">${p.name}</a></h3>
+      <div class="price"><b>${fmt(p.price)}</b>${p.old?`<s>${fmt(p.old)}</s>`:''}<small>IVA incl.</small></div>
+      ${sw}
+      <div class="add"><button type="button" data-add="${p.id}">Añadir al carrito</button></div>
+    </div></article>`;
+}
+function renderCats(){
+  const el=document.getElementById('cats');
+  el.innerHTML=Object.entries(CATS).map(([k,c])=>{
+    const n=PRODUCTS.filter(p=>p.cat===k).length;
+    return `<a href="${c.service?'https://wa.me/34636242325?text='+encodeURIComponent('Hola, quiero reparar una consola/mando:'):'#tienda'}" ${c.service?'target="_blank" rel="noopener"':`data-cat="${k}"`}>
+      <div class="ph${c.contain?' contain':''}"><img src="${c.img}" alt="${c.name}" loading="lazy"></div>
+      <div class="t"><b>${c.name}</b><small>${c.service?'Pedir presupuesto':n+' artículo'+(n!==1?'s':'')}</small></div></a>`;
+  }).join('');
+}
+function renderBest(){ document.getElementById('bestGrid').innerHTML=PRODUCTS.filter(p=>p.best).map(card).join(''); }
+function renderChips(){
+  const total=PRODUCTS.length;
+  const cats=Object.entries(CATS).filter(([k,c])=>!c.service);
+  document.getElementById('chips').innerHTML=`<button type="button" data-chip="all" aria-pressed="${state.cat==='all'}">Todo<span>${total}</span></button>`+
+    cats.map(([k,c])=>{const n=PRODUCTS.filter(p=>p.cat===k).length;return `<button type="button" data-chip="${k}" aria-pressed="${state.cat===k}">${c.name}<span>${n}</span></button>`}).join('');
+}
+function renderShop(){
+  let list=PRODUCTS.filter(p=>state.cat==='all'||p.cat===state.cat);
+  if(state.sort==='asc') list=[...list].sort((a,b)=>a.price-b.price);
+  if(state.sort==='desc') list=[...list].sort((a,b)=>b.price-a.price);
+  document.getElementById('shopGrid').innerHTML=list.length?list.map(card).join(''):'<div class="empty">No hay artículos en esta categoría ahora mismo. Pregúntanos por WhatsApp: seguro que en tienda hay algo.</div>';
+  const units=PRODUCTS.reduce((s,p)=>s+(p.variants?p.variants.length:1),0);
+  document.getElementById('countTxt').textContent=`${list.length} artículo${list.length!==1?'s':''}${state.cat==='all'?` · ${units} unidades en stock`:''}`;
+  renderChips();
+}
+function setCat(k){ state.cat=k; renderShop(); }
+
+/* Cart */
+function cartKey(p,vi){ return p.id+(p.variants?':'+vi:''); }
+function addToCart(id,vi=0){
+  const p=PRODUCTS.find(x=>x.id===id); const key=cartKey(p,vi);
+  const it=state.cart.find(x=>x.key===key);
+  if(it) it.q++; else state.cart.push({key,id,vi,q:1});
+  renderCart(); toast(`${p.name}${p.variants?' · '+p.variants[vi].n:''} añadido al carrito`);
+}
+function renderCart(){
+  const items=document.getElementById('cartItems'); let sub=0,n=0;
+  if(!state.cart.length){ items.innerHTML='<div class="emptymsg">Tu carrito está vacío.<br>Echa un ojo a las novedades.</div>'; }
+  else items.innerHTML=state.cart.map(it=>{const p=PRODUCTS.find(x=>x.id===it.id); sub+=p.price*it.q; n+=it.q;
+    return `<div class="item"><img src="${pImg(p,it.vi)}" alt=""><div><b>${p.name}</b><small>${p.variants?p.variants[it.vi].n+' · ':''}${fmt(p.price)}</small></div>
+    <div class="qty"><button type="button" data-q="-1" data-key="${it.key}" aria-label="Quitar uno">−</button><span>${it.q}</span><button type="button" data-q="1" data-key="${it.key}" aria-label="Añadir uno">+</button></div></div>`;}).join('');
+  const ship=sub===0?0:(sub>=200?0:5.95);
+  document.getElementById('cSub').textContent=fmt(sub);
+  document.getElementById('cShip').textContent=ship?fmt(ship):'Gratis';
+  document.getElementById('cTot').textContent=fmt(sub+ship);
+  document.getElementById('cartCount').textContent=n;
+}
+function openCart(o){ document.getElementById('cart').classList.toggle('open',o); document.getElementById('overlay').classList.toggle('open',o); document.getElementById('cart').setAttribute('aria-hidden',!o); }
+
+/* Modal */
+function openModal(id){
+  const p=PRODUCTS.find(x=>x.id===id); state.modal=p; state.vidx=0;
+  document.getElementById('mCat').textContent=CATS[p.cat].name+' · '+p.cond;
+  document.getElementById('mTitle').textContent=p.name;
+  document.getElementById('mPrice').innerHTML=`<b>${fmt(p.price)}</b>${p.old?`<s>${fmt(p.old)}</s>`:''}<small>IVA incluido</small>`;
+  document.getElementById('mDesc').textContent=p.desc;
+  document.getElementById('mFeat').innerHTML=p.feats.map(f=>`<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 12 5 5 9-10"/></svg>${f}</li>`).join('');
+  document.getElementById('mPh').className='ph'+(p.contain?' contain':'');
+  document.getElementById('mWa').href=waLink(p);
+  const sw=document.getElementById('mSw');
+  sw.innerHTML=p.variants?p.variants.map((v,i)=>`<button type="button" style="background:${v.c}" aria-label="${v.n}" aria-pressed="${i===0}" data-mv="${i}"></button>`).join('')+`<span id="mVn">${p.variants[0].n}</span>`:'';
+  setModalImg();
+  const m=document.getElementById('modal'); m.hidden=false; m.classList.add('open'); document.body.style.overflow='hidden';
+  document.getElementById('mClose').focus();
+}
+function setModalImg(){ const p=state.modal; const img=document.getElementById('mImg'); img.src=pImg(p,state.vidx); img.alt=p.name+(p.variants?' en color '+p.variants[state.vidx].n:''); }
+function closeModal(){ const m=document.getElementById('modal'); m.classList.remove('open'); m.hidden=true; document.body.style.overflow=''; }
+let tT; function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(tT); tT=setTimeout(()=>t.classList.remove('show'),2200); }
+
+/* Events */
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-cat]'); if(a){ setCat(a.dataset.cat); document.getElementById('drawer').classList.remove('open'); }
+  const chip=e.target.closest('[data-chip]'); if(chip){ setCat(chip.dataset.chip); }
+  const op=e.target.closest('[data-open]'); if(op){ e.preventDefault(); openModal(op.dataset.open); }
+  const ad=e.target.closest('[data-add]'); if(ad){ const c=ad.closest('.card'); const sw=c.querySelector('.swatches button[aria-pressed="true"]'); addToCart(ad.dataset.add, sw?+sw.dataset.i:0); }
+  const swb=e.target.closest('.swatches button[data-i]'); if(swb){ const box=swb.closest('.swatches'); const p=PRODUCTS.find(x=>x.id===box.dataset.id); box.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b===swb)); const img=swb.closest('.card').querySelector('.ph img'); img.src=p.variants[+swb.dataset.i].img; img.alt=p.name+' en color '+p.variants[+swb.dataset.i].n; }
+  const mv=e.target.closest('[data-mv]'); if(mv){ state.vidx=+mv.dataset.mv; mv.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b===mv)); document.getElementById('mVn').textContent=state.modal.variants[state.vidx].n; setModalImg(); }
+  const q=e.target.closest('[data-q]'); if(q){ const it=state.cart.find(x=>x.key===q.dataset.key); it.q+=+q.dataset.q; if(it.q<=0) state.cart=state.cart.filter(x=>x!==it); renderCart(); }
+  if(e.target.id==='overlay'||e.target.id==='cartClose') openCart(false);
+  if(e.target.id==='modal'||e.target.id==='mClose') closeModal();
+});
+document.getElementById('cartBtn').addEventListener('click',()=>openCart(true));
+document.getElementById('mAdd').addEventListener('click',()=>{ addToCart(state.modal.id,state.vidx); closeModal(); openCart(true); });
+document.getElementById('checkout').addEventListener('click',()=>toast('Demo: aquí iría el pago con tarjeta, Bizum o transferencia'));
+document.getElementById('sort').addEventListener('change',e=>{ state.sort=e.target.value; renderShop(); });
+document.getElementById('burger').addEventListener('click',function(){ const d=document.getElementById('drawer'); const o=!d.classList.contains('open'); d.classList.toggle('open',o); this.setAttribute('aria-expanded',o); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ closeModal(); openCart(false); } });
+
+renderCats(); renderBest(); renderShop(); renderCart();
+</script>
+</body>
+</html>
